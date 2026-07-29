@@ -74,12 +74,24 @@ a { text-decoration: none; color: inherit; }
 .nav__link:hover { background: rgba(255,255,255,0.08); }
 .nav__install {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  flex: 0 0 auto; white-space: nowrap;
   font-size: 14px; font-weight: 500; line-height: 20px; color: #000;
   background: #fff; border: 2px solid rgba(154,154,154,0.24);
   border-radius: 8px; padding: 6px; transition: background-color .15s;
 }
+.nav__install-icon { flex: 0 0 auto; }
 .nav__install:hover { background: #ededed; }
 .nav__install-icon { width: 16px; height: 16px; }
+
+/* mobile menu: drop "About", tighten so it fits */
+@media (max-width: 600px) {
+  .nav { padding: 6px; }
+  .nav__link--about { display: none; }
+  .nav__links { gap: 6px; }
+  .nav__link { padding: 0 4px; }
+  .nav__install { padding: 6px; }
+  .nav__install-label { display: none; }
+}
 
 /* ============================================================
    HERO — fills the viewport (desktop / tablet)
