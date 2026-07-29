@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spotter — See less. Miss nothing.</title>
+  <meta name="description" content="Subtle Hyperliquid PnL in your Mac's menu bar. Don't overthink with the charts." />
+  <link rel="icon" href="assets/spotter-24.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600&family=Inter:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=33" />
+</head>
+<body>
+
+  <!-- ======================= NAV ======================= -->
+  <nav class="nav">
+    <div class="nav__brand">
+      <img class="nav__logo" src="assets/spotter-24.svg" alt="" />
+      <span class="nav__name">spotter</span>
+    </div>
+    <div class="nav__links">
+      <a class="nav__link" href="#conviction">About</a>
+      <a class="nav__link" href="#features">Features</a>
+      <a class="nav__link" href="#author">Note</a>
+      <a class="nav__install" href="#install"><img class="nav__install-icon" src="assets/github-dark.svg" alt="" />Install</a>
+    </div>
+  </nav>
+
+  <!-- ======================= HERO ======================= -->
+  <header class="hero">
+    <div class="hero__bg" style="background-image:url('assets/hero-bg.png')"></div>
+    <div class="hero__blur"></div>
+    <div class="hero__band"></div>
+
+    <div class="canvas hero__canvas">
+      <div class="hero__cols"></div>
+      <div class="band-track">
+        <span class="xhair xhair--tl"></span>
+        <span class="xhair xhair--tr"></span>
+        <span class="xhair xhair--bl"></span>
+        <span class="xhair xhair--br"></span>
+      </div>
+
+      <img class="menubar-img" src="assets/menubar-hero.svg" alt="Spotter menu bar" />
+
+      <div class="hero__content">
+        <img class="hero__mark" src="assets/spotter-72.svg" alt="Spotter" />
+        <h1 class="hero__title"><span class="dim">Spotter.</span> See less.<br />Miss nothing.</h1>
+        <p class="hero__sub">Subtle Hyperliquid PnL in your Mac's menu bar.<br />Don't overthink with the charts.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- ============ Conviction / screenshot ============ -->
+    <section class="block" id="conviction">
+      <div class="block__head">
+        <h2 class="block__title">Conviction in the corner of your eye</h2>
+        <p class="block__desc">Spotter is a native macOS menu bar app that keeps your Hyperliquid and Trade.xyz PnL in the corner of your eye — one glance, always current, no chart to overthink.</p>
+      </div>
+      <div class="shotcard">
+        <div class="shotcard__img"><img src="assets/app-screenshot.png" alt="Spotter menu bar dropdown" /></div>
+        <div class="shotcard__foot">
+          <div class="brands">
+            <img class="brand brand--hl" src="assets/hl-logo.svg" alt="Hyperliquid" />
+            <span class="cross"></span>
+            <img class="brand brand--trade" src="assets/trade-logo.svg" alt="Trade.xyz" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Features ============ -->
+    <section class="block" id="features">
+      <div class="block__head">
+        <h2 class="block__title">Features</h2>
+        <p class="block__desc">Spotter is a native macOS menu bar app that keeps your Hyperliquid and Trade.xyz PnL in the corner of your eye — one glance, always current, no chart to overthink.</p>
+      </div>
+
+      <div class="featurecard">
+        <!-- dynamic pnl simulation -->
+        <div class="sim">
+          <div class="sim__head">
+            <h3 class="sim__title">Dynamic Pnl Simulation</h3>
+            <p class="sim__sub">Drag the price. Feel the outcome. Your book re-prices under your finger.<br />Know −20% or +30% before the market shows you.</p>
+          </div>
+          <img class="sim__value-img" src="assets/pnl-value.svg" alt="−$2,10 115" />
+          <p class="sim__margin">Margin $24,176 · 3 positions · upd 4 secs ago</p>
+          <img class="sim__catlogo" src="assets/cat-logo.svg" alt="" />
+          <div class="scrubber" data-scrubber data-playhead-color="#f0b052" data-playhead="0.44"></div>
+        </div>
+
+        <!-- two feature tiles -->
+        <div class="feature-row">
+          <div class="feat feat--private">
+            <img class="feat__watermark" src="assets/cat-bg.svg" alt="" />
+            <div class="feat__head">
+              <h3 class="feat__title">Private by design</h3>
+              <p class="feat__body">No login, no keys, no backend, no analytics. Just a public address in, numbers out.</p>
+            </div>
+            <div class="feat__shield"><svg viewBox="0 0 64 74" fill="none"><path d="M32 3l25 9v20c0 17-11 29-25 36C18 61 7 49 7 32V12l25-9z" stroke="currentColor" stroke-width="3"/><path d="M32 3v65C18 61 7 49 7 32V12l25-9z" fill="currentColor"/></svg></div>
+          </div>
+
+          <div class="feat feat--glance">
+            <div class="feat__head">
+              <h3 class="feat__title">No distraction</h3>
+              <p class="feat__body">Your tab-switching habit dies in a day. One glance at the menu bar, the rest stays out of sight until you ask.</p>
+            </div>
+            <img class="feat__menubar-img" src="assets/menubar-nodistraction.svg" alt="Spotter menu bar" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Installation guide ============ -->
+    <section class="block" id="install">
+      <div class="guide">
+        <div class="guide__titlerow">
+          <h2 class="block__title">Installation</h2>
+          <a class="gh-btn" href="https://github.com/0xRoark/Spotter" target="_blank" rel="noopener noreferrer">
+            <img class="gh-btn__icon" src="assets/github.svg" alt="" />
+            <span>Github</span>
+          </a>
+        </div>
+
+        <!-- 1. Download -->
+        <div class="guide__step">
+          <p class="guide__h">1.&nbsp; Download app</p>
+          <div class="dl">
+            <div class="dl__box">
+              <div class="dl__inner">
+                <div class="dl__urlrow">
+                  <p class="dl__url">https://github.com/0xRoark/Spotter/releases/download/v0.1.9/Spotter.zip</p>
+                  <button class="dl__copy" type="button" aria-label="Copy download link"
+                    data-copy="https://github.com/0xRoark/Spotter/releases/download/v0.1.9/Spotter.zip">
+                    <img src="assets/icon-copy.svg" alt="" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="guide__list">
+            <li>Go to <a class="guide__link" href="https://github.com/0xRoark/Spotter/releases">Releases page</a> and under the latest version, click <b>Spotter.zip</b> to download it.</li>
+            <li>It lands in your Downloads folder and unzips to Spotter.app (double-click the .zip if it doesn't unzip on its own).</li>
+          </ul>
+        </div>
+
+        <!-- 2. Move -->
+        <div class="guide__step">
+          <p class="guide__h">2. Move it to Applications</p>
+          <ul class="guide__list">
+            <li>Drag Spotter.app into your Applications folder.</li>
+          </ul>
+        </div>
+
+        <!-- 3. Open -->
+        <div class="guide__step">
+          <p class="guide__h">3. Open it the first time</p>
+          <ul class="guide__list">
+            <li>In Applications, double-click Spotter.</li>
+            <li>You'll see “Apple could not verify Spotter is free of malware.” Click Done.</li>
+            <li>Open the Apple menu → System Settings → Privacy &amp; Security.</li>
+            <li>Scroll down to the Security section — you'll see “Spotter was blocked to protect your Mac.” Click Open Anyway.</li>
+          </ul>
+        </div>
+
+        <!-- 4. Track -->
+        <div class="guide__step">
+          <p class="guide__h">4. Start tracking</p>
+          <ul class="guide__list">
+            <li>Look at the top-right of your menu bar — you'll see the Spotter cat.</li>
+            <li>Paste a Hyperliquid or Trade.XYZ wallet address, and hit Track.</li>
+            <li>Your live PnL now sits in the menu bar.</li>
+          </ul>
+        </div>
+      </div>
+
+      <img class="guide__logo" src="assets/spotter-32.svg" alt="Spotter" />
+
+      <div class="author" id="author">
+        <p class="author__h">From <a class="author__link" href="https://x.com/roark_0x" target="_blank" rel="noopener noreferrer">@roark_0x</a></p>
+        <p class="author__body">Spotter was built as a pet project for an obvious niche to reduce staring, and make trading more disciplined. It stayed on my Mac before it got a name, hope it earns a spot on yours.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js?v=17"></script>
+</body>
+</html>

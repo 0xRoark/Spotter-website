@@ -1,0 +1,274 @@
+/* ============================================================
+   Spotter — New LP (580px column)
+   ============================================================ */
+
+:root {
+  --ink: #000;
+  --sans: "Instrument Sans", system-ui, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+  --apple: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  --gutter: 24px;
+  --col: 580px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+
+/* smooth anchor scrolling + offset so targets clear the fixed nav */
+html { scroll-behavior: smooth; }
+#conviction, #features, #install, #author { scroll-margin-top: 96px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  font-family: var(--sans);
+  background: #fff;
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+.canvas { width: 100%; max-width: 1440px; margin: 0 auto; position: relative; }
+.dim { color: rgba(255,255,255,0.3); }
+
+/* small plus glyph */
+.cross {
+  display: inline-block; width: 12px; height: 12px; opacity: 0.45; flex: 0 0 auto;
+  background:
+    linear-gradient(#000,#000) center / 1px 12px no-repeat,
+    linear-gradient(#000,#000) center / 12px 1px no-repeat;
+}
+/* crosshair "+" glyph */
+.xhair {
+  position: absolute; width: 16px; height: 16px; z-index: 4; pointer-events: none;
+  transform: translate(-50%, -50%);
+  background:
+    linear-gradient(var(--xc, rgba(255,255,255,0.5)), var(--xc, rgba(255,255,255,0.5))) center / 1px 16px no-repeat,
+    linear-gradient(var(--xc, rgba(255,255,255,0.5)), var(--xc, rgba(255,255,255,0.5))) center / 16px 1px no-repeat;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 100; width: min(472px, calc(100% - 32px));
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px; border-radius: 16px;
+  background: rgba(16,18,22,0.72);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.nav__brand { display: flex; align-items: center; gap: 3px; height: 32px; padding: 0 6px; }
+.nav__logo  { width: 24px; height: 24px; }
+.nav__name  { font-size: 20px; font-weight: 500; color: #fff; letter-spacing: -1px; }
+.nav__links { display: flex; align-items: center; gap: 12px; }
+.nav__link  {
+  height: 32px; display: inline-flex; align-items: center;
+  font-size: 14px; font-weight: 500; color: #fff; padding: 0 8px;
+  border-radius: 8px; transition: background .15s;
+}
+.nav__link:hover { background: rgba(255,255,255,0.08); }
+.nav__install {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  font-size: 14px; font-weight: 500; line-height: 20px; color: #000;
+  background: #fff; border: 2px solid rgba(154,154,154,0.24);
+  border-radius: 8px; padding: 6px; transition: background-color .15s;
+}
+.nav__install:hover { background: #ededed; }
+.nav__install-icon { width: 16px; height: 16px; }
+
+/* ============================================================
+   HERO — fills the viewport (desktop / tablet)
+   ============================================================ */
+.hero { position: relative; height: 100vh; height: 100dvh; min-height: 640px; overflow: hidden; background: #0d1207; }
+.hero__bg   { position: absolute; inset: 0; background-size: cover; background-position: 58% bottom; }
+.hero__blur { position: absolute; inset: 0; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); background: rgba(255,255,255,0.01); }
+.hero__band {
+  position: absolute; top: 26.3%; left: 50%; transform: translateX(-50%);
+  width: min(580px, calc(100% - 2 * var(--gutter))); height: 22.7%;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(243,243,243,0.26);
+  border-bottom: 1px solid rgba(243,243,243,0.26);
+}
+.hero__canvas { height: 100%; }
+.hero__cols {
+  position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: min(580px, calc(100% - 2 * var(--gutter)));
+  border-left: 1px solid rgba(243,243,243,0.12);
+  border-right: 1px solid rgba(243,243,243,0.12);
+  z-index: 3; pointer-events: none;
+}
+.band-track {
+  position: absolute; top: 26.3%; left: 50%; transform: translateX(-50%);
+  width: min(580px, calc(100% - 2 * var(--gutter))); height: 22.7%; z-index: 4; pointer-events: none;
+}
+.band-track .xhair--tl { left: 0; top: 0; }
+.band-track .xhair--tr { left: 100%; top: 0; }
+.band-track .xhair--bl { left: 0; top: 100%; }
+.band-track .xhair--br { left: 100%; top: 100%; }
+
+.menubar-img {
+  position: absolute; top: 35.4%; left: 50%; transform: translateX(-50%);
+  width: min(385px, calc(100% - 40px)); height: auto; z-index: 4;
+}
+.hero__content {
+  position: absolute; top: 58%; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  width: min(580px, calc(100% - 40px)); text-align: center; color: #fff; z-index: 4;
+}
+.hero__mark  { width: 72px; height: 72px; }
+.hero__title { font-size: 44px; line-height: 48px; font-weight: 500; margin: 0; letter-spacing: -0.02em; }
+.hero__sub   { font-size: 16px; line-height: 20px; opacity: 0.5; margin: 0; width: min(352px, 100%); }
+
+/* ============================================================
+   MAIN column
+   ============================================================ */
+.main {
+  width: min(580px, calc(100% - 2 * var(--gutter))); margin: 0 auto;
+  display: flex; flex-direction: column; gap: 80px;
+  padding: 80px 0 100px;
+}
+.block { display: flex; flex-direction: column; gap: 28px; }
+#install { gap: 36px; }
+
+.block__head { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.block__title { margin: 0; font-size: 28px; line-height: 32px; font-weight: 500; letter-spacing: -0.01em; color: #000; }
+.block__title--center { text-align: center; width: 100%; }
+.block__desc { margin: 0; font-size: 14px; line-height: 20px; font-weight: 400; color: #000; }
+
+/* ============================================================
+   Section 1 — screenshot card
+   ============================================================ */
+.shotcard { border: 1px solid #e8e8e8; border-radius: 12px; overflow: hidden; }
+.shotcard__img { aspect-ratio: 1518 / 962; }
+.shotcard__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shotcard__foot { background: #f7f7f7; padding: 24px; display: flex; justify-content: center; }
+.brands { display: flex; align-items: center; gap: 24px; }
+.brand { height: 20px; width: auto; }
+
+/* ============================================================
+   Section 2 — feature card (sim + two tiles)
+   ============================================================ */
+.featurecard { border: 1px solid #c7c7c7; border-radius: 12px; overflow: hidden; }
+
+/* dynamic pnl simulation (design 580 x 290) */
+.sim { position: relative; container-type: inline-size; background: #060606; aspect-ratio: 580 / 290; width: 100%; overflow: hidden; }
+.sim__head { position: absolute; left: 5.34%; top: 10.7%; width: 88.3%; display: flex; flex-direction: column; gap: 1.38cqi; }
+.sim__title { margin: 0; font-size: 4.14cqi; line-height: 5.52cqi; font-weight: 500; color: #fff; letter-spacing: -0.01em; }
+.sim__sub   { margin: 0; font-size: 2.41cqi; line-height: 3.45cqi; font-weight: 400; color: #898989; }
+.sim__value-img { position: absolute; left: 7.6%; top: 47%; width: 25.2cqi; height: auto; }
+.sim__margin { position: absolute; left: 8.1%; top: 63.8%; margin: 0; font-family: "Inter", var(--apple); font-size: 1.72cqi; color: #8a8d93; white-space: nowrap; }
+.sim__catlogo { position: absolute; left: 86.7%; top: 50%; width: 5.86cqi; height: 5.86cqi; transform: rotate(8deg); }
+
+/* scrubber */
+.scrubber { position: absolute; left: 5.52%; top: 74.8%; width: 88.3%; height: 9.3cqi; overflow: hidden; }
+.scrubber__tick { position: absolute; bottom: 44%; width: 0.29cqi; border-radius: 1px; background: rgba(255,255,255,0.2); }
+.scrubber__label { position: absolute; top: 66%; font-family: "Inter", var(--apple); font-size: 2.3cqi; color: rgba(255,255,255,0.22); transform: translateX(-50%); white-space: nowrap; }
+.scrubber__head { position: absolute; top: 0; width: 0.29cqi; height: 60%; border-radius: 1px; }
+
+/* two feature tiles (design 290 x 290 each) */
+.feature-row { display: flex; border-top: 1px solid #c7c7c7; }
+.feat { position: relative; container-type: inline-size; width: 50%; aspect-ratio: 1; overflow: hidden; background: linear-gradient(to bottom, #feffff, #dbdfe0); }
+.feat + .feat { border-left: 1px solid #c7c7c7; }
+.feat__head { position: absolute; left: 11%; top: 11%; right: 11%; display: flex; flex-direction: column; gap: 2.76cqi; z-index: 2; }
+.feat__title { margin: 0; font-size: 8.28cqi; line-height: 11cqi; font-weight: 500; color: #000; letter-spacing: -0.01em; }
+.feat__body  { margin: 0; font-size: 4.83cqi; line-height: 6.9cqi; font-weight: 400; color: #000; }
+.feat__watermark { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; pointer-events: none; }
+.feat__shield { position: absolute; left: 50%; top: 56.5%; transform: translateX(-50%); width: 17.6cqi; height: 20.4cqi; color: #111; }
+.feat__shield svg { width: 100%; height: 100%; }
+
+/* "No distraction" menu-bar mockup (single vector) */
+.feat__menubar-img { position: absolute; top: 70.3%; left: 50%; transform: translateX(-50%); width: 89.3cqi; height: auto; }
+
+/* ============================================================
+   Section 3 — installation guide + author
+   ============================================================ */
+.guide { display: flex; flex-direction: column; gap: 28px; }
+.guide__titlerow { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.gh-btn {
+  display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto;
+  background: #000; border: 2px solid rgba(154,154,154,0.24); border-radius: 8px;
+  padding: 6px 10px; color: #fff;
+  font-size: 14px; font-weight: 500; line-height: 20px; white-space: nowrap;
+  transition: background-color .15s;
+}
+.gh-btn:hover { background: #1c1c1c; }
+.gh-btn__icon { width: 16px; height: 16px; }
+.guide__step { display: flex; flex-direction: column; gap: 8px; }
+.guide__h { margin: 0; font-size: 14px; line-height: 20px; font-weight: 600; color: #000; }
+.guide__list { margin: 0; padding-left: 21px; display: flex; flex-direction: column; gap: 6px; }
+.guide__list li { font-size: 14px; line-height: 20px; color: #000; }
+.guide__list li::marker { color: #000; }
+.guide__link { font-weight: 600; }
+.guide__list b { font-weight: 600; }
+
+/* download box */
+.dl { width: 100%; }
+.dl__box {
+  background: linear-gradient(to bottom, #d8dbdc, #e2e2e2);
+  border: 1px solid #c7c7c7; border-radius: 12px; padding: 6px;
+}
+.dl__inner {
+  background: #000; border: 1px solid #7f7e7e; border-radius: 8px;
+  padding: 10px 8px 2px; display: flex; flex-direction: column; gap: 8px;
+}
+.dl__urlrow { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; padding: 0 4px; }
+.dl__url {
+  margin: 0; flex: 1 1 auto; min-width: 0;
+  font-family: var(--mono); font-weight: 500; font-size: 14px; line-height: 20px; color: #b9b9b9;
+  white-space: nowrap; overflow-x: scroll; overscroll-behavior-x: contain;
+  padding-bottom: 4px;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 16px), transparent 100%);
+  mask-image: linear-gradient(to right, #000 calc(100% - 16px), transparent 100%);
+}
+/* subtle always-visible custom scrollbar (styling ::-webkit-scrollbar without the
+   standard scrollbar-width keeps Chromium/Safari from using the Mac overlay bar) */
+.dl__url::-webkit-scrollbar { height: 4px; }
+.dl__url::-webkit-scrollbar-track { background: transparent; }
+.dl__url::-webkit-scrollbar-thumb { background: #3d3d3d; border-radius: 4px; }
+.dl__url::-webkit-scrollbar-thumb:hover { background: #555; }
+.dl__copy { background: none; border: 0; padding: 0; margin-top: 2px; cursor: pointer; width: 16px; height: 16px; flex: 0 0 16px; opacity: .85; transition: opacity .15s; }
+.dl__copy:hover { opacity: 1; }
+.dl__copy img { width: 16px; height: 16px; }
+
+.guide__logo { width: 32px; height: 32px; align-self: center; }
+
+/* author card */
+.author { background: #f7f7f7; border: 1px dashed #d0d0d0; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+.author__h { margin: 0; font-size: 14px; line-height: 20px; font-weight: 600; color: #000; }
+.author__link, .guide__link { position: relative; text-decoration: none; }
+.author__link::after, .guide__link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px;
+  background: #c4c4c4;
+  opacity: 0;
+  transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.author__link:hover::after, .author__link:focus-visible::after,
+.guide__link:hover::after, .guide__link:focus-visible::after { opacity: 1; }
+.author__body { margin: 0; font-size: 14px; line-height: 20px; color: #616161; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  /* stack the two feature tiles */
+  .feature-row { flex-direction: column; }
+  .feat { width: 100%; }
+  .feat + .feat { border-left: 0; border-top: 1px solid #c7c7c7; }
+
+  .main { gap: 64px; padding: 72px 0 88px; }
+
+  /* hero recomposed for a shorter viewport */
+  .hero { height: 600px; }
+  .hero__band { top: 24%; height: 26%; }
+  .band-track { top: 24%; height: 26%; }
+  .menubar-img { top: 33%; }
+  .hero__content { top: 56%; gap: 16px; }
+  .hero__mark { width: 60px; height: 60px; }
+  .hero__title { font-size: 32px; line-height: 36px; }
+}
