@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600&family=Inter:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=35" />
+  <link rel="stylesheet" href="styles.css?v=37" />
 </head>
 <body>
 
@@ -104,9 +104,11 @@
             <h3 class="sim__title">Dynamic Pnl Simulation</h3>
             <p class="sim__sub">Drag the price. Feel the outcome. Your book re-prices under your finger.<br />Know −20% or +30% before the market shows you.</p>
           </div>
-          <img class="sim__value-img" src="assets/pnl-value.svg" alt="−$2,10 115" />
+          <div class="sim__readout">
+            <img class="sim__value-img" src="assets/pnl-value.svg" alt="−$2,10 115" />
+            <img class="sim__catlogo" src="assets/cat-logo.svg" alt="" />
+          </div>
           <p class="sim__margin">Margin $24,176 · 3 positions · upd 4 secs ago</p>
-          <img class="sim__catlogo" src="assets/cat-logo.svg" alt="" />
           <div class="scrubber" data-scrubber data-playhead-color="#f0b052" data-playhead="0.44"></div>
         </div>
 
@@ -205,5 +207,10 @@
   </main>
 
   <script src="app.js?v=17"></script>
+
+  <!-- Vercel Web Analytics (static-site / "Other" method) -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights (optional — also enable Speed Insights in the dashboard) -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>

@@ -170,6 +170,7 @@ a { text-decoration: none; color: inherit; }
 
 /* dynamic pnl simulation (design 580 x 290) */
 .sim { position: relative; container-type: inline-size; background: #060606; aspect-ratio: 580 / 290; width: 100%; overflow: hidden; }
+.sim__readout { display: contents; } /* on desktop the children keep their own absolute positions */
 .sim__head { position: absolute; left: 5.34%; top: 10.7%; width: 88.3%; display: flex; flex-direction: column; gap: 1.38cqi; }
 .sim__title { margin: 0; font-size: 4.14cqi; line-height: 5.52cqi; font-weight: 500; color: #fff; letter-spacing: -0.01em; }
 .sim__sub   { margin: 0; font-size: 2.41cqi; line-height: 3.45cqi; font-weight: 400; color: #898989; }
@@ -182,6 +183,27 @@ a { text-decoration: none; color: inherit; }
 .scrubber__tick { position: absolute; bottom: 44%; width: 0.29cqi; border-radius: 1px; background: rgba(255,255,255,0.2); }
 .scrubber__label { position: absolute; top: 66%; font-family: "Inter", var(--apple); font-size: 2.3cqi; color: rgba(255,255,255,0.22); transform: translateX(-50%); white-space: nowrap; }
 .scrubber__head { position: absolute; top: 0; width: 0.29cqi; height: 60%; border-radius: 1px; }
+
+/* Dynamic PnL card reflows taller on mobile with fixed, readable type */
+@media (max-width: 600px) {
+  .sim {
+    aspect-ratio: auto; min-height: 384px;
+    padding: 24px; display: flex; flex-direction: column;
+  }
+  .sim__head { position: static; width: auto; gap: 8px; }
+  .sim__title { font-size: 28px; line-height: 32px; }
+  .sim__sub   { font-size: 14px; line-height: 20px; }
+
+  .sim__readout {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: auto;               /* push the readout + scrubber to the bottom */
+  }
+  .sim__value-img { position: static; width: 146px; height: auto; }
+  .sim__catlogo   { position: static; margin: 0; width: 34px; height: 34px; }
+  .sim__margin    { position: static; margin: 6px 0 0; font-size: 10px; }
+  .scrubber       { position: relative; margin-top: 24px; width: 100%; height: 38px; }
+  .sim .scrubber__label { font-size: 9.4px; }
+}
 
 /* two feature tiles (design 290 x 290 each) */
 .feature-row { display: flex; border-top: 1px solid #c7c7c7; }
