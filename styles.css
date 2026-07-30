@@ -203,6 +203,8 @@ a { text-decoration: none; color: inherit; }
   .sim__margin    { position: static; margin: 6px 0 0; font-size: 10px; }
   .scrubber       { position: relative; margin-top: 24px; width: 100%; height: 38px; }
   .sim .scrubber__label { font-size: 9.4px; }
+  /* cqi widths become sub-pixel at mobile card width — pin ticks/playhead so they stay visible */
+  .sim .scrubber__tick, .sim .scrubber__head { width: 1.2px; }
 }
 
 /* two feature tiles (design 290 x 290 each) */
