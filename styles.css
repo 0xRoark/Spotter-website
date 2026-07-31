@@ -269,9 +269,21 @@ a { text-decoration: none; color: inherit; }
 .dl__url::-webkit-scrollbar-track { background: transparent; }
 .dl__url::-webkit-scrollbar-thumb { background: #3d3d3d; border-radius: 4px; }
 .dl__url::-webkit-scrollbar-thumb:hover { background: #555; }
-.dl__copy { background: none; border: 0; padding: 0; margin-top: 2px; cursor: pointer; width: 16px; height: 16px; flex: 0 0 16px; opacity: .85; transition: opacity .15s; }
+.dl__copywrap { position: relative; flex: 0 0 auto; display: inline-flex; margin-top: 2px; }
+.dl__copy { background: none; border: 0; padding: 0; cursor: pointer; width: 16px; height: 16px; flex: 0 0 16px; opacity: .85; transition: opacity .15s; }
 .dl__copy:hover { opacity: 1; }
 .dl__copy img { width: 16px; height: 16px; }
+.dl__copied {
+  position: absolute; top: 50%; right: calc(100% + 8px);
+  transform: translateY(-50%) translateX(4px);
+  padding: 3px 8px; border-radius: 999px;
+  font-family: var(--mono); font-size: 11px; line-height: 1; font-weight: 500; letter-spacing: .02em;
+  color: #eaeaea; background: #2b2b2b; border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  white-space: nowrap; pointer-events: none; opacity: 0;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.dl__copy.is-copied + .dl__copied { opacity: 1; transform: translateY(-50%) translateX(0); }
 
 .guide__logo { width: 32px; height: 32px; align-self: center; }
 

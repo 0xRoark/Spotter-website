@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600&family=Inter:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=38" />
+  <link rel="stylesheet" href="styles.css?v=40" />
 </head>
 <body>
 
@@ -191,10 +191,13 @@
               <div class="dl__inner">
                 <div class="dl__urlrow">
                   <p class="dl__url">https://github.com/0xRoark/Spotter/releases/download/v0.1.9/Spotter.zip</p>
-                  <button class="dl__copy" type="button" aria-label="Copy download link"
-                    data-copy="https://github.com/0xRoark/Spotter/releases/download/v0.1.9/Spotter.zip">
-                    <img src="assets/icon-copy.svg" alt="" />
-                  </button>
+                  <span class="dl__copywrap">
+                    <button class="dl__copy" type="button" aria-label="Copy download link"
+                      data-copy="https://github.com/0xRoark/Spotter/releases/download/v0.1.9/Spotter.zip">
+                      <img src="assets/icon-copy.svg" alt="" />
+                    </button>
+                    <span class="dl__copied" aria-hidden="true">Copied</span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -244,7 +247,7 @@
     </section>
   </main>
 
-  <script src="app.js?v=17"></script>
+  <script src="app.js?v=18"></script>
 
   <!-- Vercel Web Analytics (static-site / "Other" method) -->
   <script defer src="/_vercel/insights/script.js"></script>
