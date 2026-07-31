@@ -157,8 +157,9 @@ a { text-decoration: none; color: inherit; }
    Section 1 — screenshot card
    ============================================================ */
 .shotcard { border: 1px solid #e8e8e8; border-radius: 12px; overflow: hidden; }
-.shotcard__img { aspect-ratio: 1518 / 962; }
-.shotcard__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shotcard__img { aspect-ratio: 2792 / 2160; }
+.shotcard__img img,
+.shotcard__img video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .shotcard__foot { background: #f7f7f7; padding: 24px; display: flex; justify-content: center; }
 .brands { display: flex; align-items: center; gap: 24px; }
 .brand { height: 20px; width: auto; }
